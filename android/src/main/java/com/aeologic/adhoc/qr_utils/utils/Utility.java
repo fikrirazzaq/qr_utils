@@ -13,8 +13,6 @@ import com.google.zxing.WriterException;
 import com.google.zxing.common.BitMatrix;
 import com.google.zxing.qrcode.QRCodeWriter;
 
-import java.util.Hashtable;
-
 public class Utility {
 
     public static Bitmap generateQRCode(String content) throws WriterException {
@@ -41,11 +39,11 @@ public class Utility {
         Drawable.ConstantState constantState1 = drawable1.getConstantState();
         Drawable.ConstantState constantState2 = drawable2.getConstantState();
 
-        return (constantState1 != null && constantState2 != null && constantState1.equals(constantState2))
+        return (constantState1 != null && constantState1.equals(constantState2))
                 || getBitmap(drawable1).sameAs(getBitmap(drawable2));
     }
 
-    public static Bitmap getBitmap(Drawable drawable) {
+    private static Bitmap getBitmap(Drawable drawable) {
         Bitmap result;
         if (drawable instanceof BitmapDrawable) {
             result = ((BitmapDrawable) drawable).getBitmap();
